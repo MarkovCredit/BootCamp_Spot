@@ -1,2 +1,5 @@
-# bc_test_123
-Testing in class github capabilities
+#Read Me
+
+This repo is used to share projects from UCI Data Analytics BootCamp.
+
+
