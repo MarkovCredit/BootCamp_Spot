@@ -48,14 +48,17 @@ os.getcwd()
 os.chdir('C:\\Users\markl\PyBank')
 os.getcwd()
 
+#need to create empty list objects to put monthly revenues and months into
+#also need a list to hold a list for monthly changes (n-1 length)
 revenue_list = []
 months_list = []
 monthly_rev_change_list = []
 
+#pass the file path to a str object; the file location will differ between
+#users operating env; 
+csv_path_pybank = 'budget_data.csv'
 
-csv_path_pybank = os.path.join('budget_data.csv')
-
-
+#use with open statement to initialize our reading of the csv
 with open(csv_path_pybank) as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
@@ -65,21 +68,26 @@ with open(csv_path_pybank) as csvfile:
     #check type of object
     type(csvreader)
     
-    #need to iterate over each row to grab rev and dates
+    #need to iterate over each row to grab rev and dates; 
     for row in csvreader:
         revenue_list.append(int(row[1]))
         months_list.append(row[0])
-print("Financial_Analysis")
-print("---------------------------")
-print("There are "+ str(len(months_list))+" months in the budget")
-print("Total Revenues of $",'{:,}'.format(sum(revenue_list))) 
+
+#lets store a total revenues object for later use
 total_revenues = sum(revenue_list)
-#now we need to start at the 1st (second actual row) item and subtract the value
-#from the i - 1 row 
+#now we need to start at the 1st index position (second actual row) and subtract the value
+#from the preceding row. we set the range from 1 to length of revenue list since we skip
+#the first row as there is no change from this position
+#
 
     for i in range(1,len(revenue_list)):
         monthly_rev_change_list.append(revenue_list[i] - revenue_list[i-1])
-        avg_rev_change = sum(monthly_rev_change_list) / len(monthly_rev_change_list)
+
+#compute the average revenue change by summing all the monthly changes and dividing
+#by the length
+        
+        
+avg_rev_change = sum(monthly_rev_change_list) / len(monthly_rev_change_list)
 
 
 #find max and min values
@@ -90,9 +98,9 @@ max_rev_change_date = months_list[monthly_rev_change_list.index(max(monthly_rev_
 min_rev_change_date = months_list[monthly_rev_change_list.index(min(monthly_rev_change_list))]
 
 #print necessary items to the console>      
-print("Financial_Analysis")
-print("---------------------------")
-print("There are "+ str(len(months_list))+" months in the budget")
+print("Financial_Analysis\n")
+print("---------------------------\n")
+print("There are "+ str(len(months_list))+" months in the budget\n")
 print("Total Revenues of $",'{:,}'.format(sum(revenue_list)))        
 print("The average revenue change was $",'{:,}'.format(avg_rev_change))
 print("The maximum change in revenue was $", '{:,}'.format(max_rev_change),"occuring during",max_rev_change_date)
