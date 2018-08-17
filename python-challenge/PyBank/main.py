@@ -54,8 +54,7 @@ revenue_list = []
 months_list = []
 monthly_rev_change_list = []
 
-#pass the file path to a str object; the file location will differ between
-#users operating env; 
+#pass the file path to a str object;
 csv_path_pybank = 'budget_data.csv'
 
 #use with open statement to initialize our reading of the csv
