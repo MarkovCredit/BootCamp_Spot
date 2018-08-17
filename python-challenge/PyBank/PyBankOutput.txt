@@ -1,0 +1,7 @@
+Financial_Analysis
+----------------------
+There are 41 months in the budget
+Total Revenues of $18971412.
+The average revenue change was $ -6758.975 per month.
+The maximum change in revenue was $1837235 occuring during Jan-16
+The minimum change in revenue was $-1779747 occuring during Jul-14
