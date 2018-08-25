@@ -1,0 +1,15 @@
+Heroes of Pymoli:
+
+This analysis seeks to describe a set of video game purchases. 
+
+Within the set there are 780 purchases and 576 unique purchasers.
+
+The following trends are apparent after analyzing the data within Pandas libray in Python:
+1) Male Dominance: Males dominate the data set with 484 unique individuals (84.03%) vs 81 females (14.1%) and Other/Non-disclosed (1.91%). It is hard to tell if this trend is secular/long-lasting because we do not have a time object/variable in this data set to view prior month, same period prior year or other time variables. 
+
+2) Millenial-concentrated: Assuming this data is fairly recent (2017 or 2018), 62.63% of the unique screen names (denoted SN in the data set) were between the age groups 25-29 years old (12.625%) and 30-34 years old (45.625%) falling into the Millenial category. The second largest category falls just outside Millenial cutoff, 35-39 years old, at 17.0% of the data for 136 unique individuals.
+
+3) Younger gamers tend to have higher budgets: likely as a result of still living at home, using College loan money or having Daddy pick up the bill, the 20-24 year old bucket( comprising 23 individuals at 2.875% of the data) had the highest average ticket price for games purchased at $3.35 per game. However, this should be qualified by the fact that 2.875% is a small bin and smaller bins are more easily affected by single purchases. A better binning technique--ensuring that each age bin is equal--would be a better method (for instance, 10 bins that each have ~10% of the observations).
+
+
+
