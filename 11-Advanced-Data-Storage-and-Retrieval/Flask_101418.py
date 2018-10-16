@@ -48,9 +48,8 @@ def welcome():
 def precipitation():
     session = Session(engine)
     """Return a dict for temp and dates over the last year"""
-    # Query all passengers
-    results = session.query(Measurement.date, Measurement.prcp).\
-            filter(Measurement.date > one_year_ago_date).group_by(Measurement.date).order_by(Measurement.date).all()
+
+    results = session.query(Measurement.date, Measurement.prcp).all()
 
     # Create a dictionary from the row data and append to a list of all dates/temps
     date_temps = []
@@ -70,7 +69,7 @@ def precipitation():
 @app.route("/api/v1.0/stations")
 def stations():
     """Returns unique stations"""
-    # Query all passengers
+    
     engine = create_engine("sqlite:///Resources/hawaii.sqlite")
     stations = pd.DataFrame(engine.execute("SELECT distinct station from Measurement").fetchall()).to_dict()
 
@@ -82,10 +81,22 @@ def stations():
 @app.route("/api/v1.0/tobs")
 def tobs():
     """Return temp and dates over the last year"""
-    # Query all passengers
-    engine = create_engine("sqlite:///Resources/hawaii.sqlite")
-    tobs = pd.DataFrame(engine.execute("SELECT date, tobs from Measurement").fetchall()).to_dict()
-    return jsonify(tobs)
+    
+    session = Session(engine)
+    """Return a dict for temp and dates over the last year"""
+    
+    results = session.query(Measurement.date, Measurement.prcp).\
+            filter(Measurement.date > one_year_ago_date).group_by(Measurement.date).order_by(Measurement.date).all()
+
+    # Create a dictionary from the row data and append to a list of all dates/temps
+    date_temps = []
+    for date in results:
+        temp_dict = {}
+        temp_dict["date"] = date.date
+        temp_dict["prcp"] = date.prcp
+        date_temps.append(temp_dict)
+        
+    return(jsonify(date_temps))
 
 
 
