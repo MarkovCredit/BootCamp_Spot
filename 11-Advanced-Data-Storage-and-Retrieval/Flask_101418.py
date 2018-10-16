@@ -28,8 +28,7 @@ print(one_year_ago_date)
 
 
 app = Flask(__name__)
-with app.app_context():
-        init_db()
+
 
 @app.route("/")
 def welcome():
@@ -55,8 +54,8 @@ def precipitation():
     date_temps = []
     for date in results:
         temp_dict = {}
-        temp_dict["date"] = Measurement.date
-        temp_dict["prcp"] = Measurement.prcp
+        temp_dict["date"] = date.date
+        temp_dict["prcp"] = date.prcp
         
         date_temps.append(temp_dict)
 
@@ -68,7 +67,7 @@ def precipitation():
 def stations():
     """Returns unique stations"""
     # Query all passengers
-    results = stations = pd.DataFrame(engine.execute("SELECT * from Measurement").fetchall())    
+    stations = pd.DataFrame(engine.execute("SELECT * from Measurement").fetchall())    
     return jsonify(stations['Station'].unique())
 
 #Climate App
