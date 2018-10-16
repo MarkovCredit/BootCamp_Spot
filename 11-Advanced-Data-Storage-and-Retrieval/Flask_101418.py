@@ -3,6 +3,7 @@
 from datetime import timedelta , datetime as dt
 # Python SQL toolkit and Object Relational Mapper
 import sqlalchemy
+import pandas as pd
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, inspect
@@ -35,7 +36,7 @@ def welcome():
     """List all available api routes."""
     return (
         f"Available Routes:<br/>"
-        f"/api/v1.0/precipitatipn<br/>"
+        f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobss<br/>"
         f"/api/v1.0/start<br/>"
@@ -59,7 +60,7 @@ def precipitation():
         
         date_temps.append(temp_dict)
 
-    return jsonify(date_temps)
+        return jsonify(date_temps)
     
 
 
