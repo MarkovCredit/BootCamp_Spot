@@ -47,7 +47,7 @@ def welcome():
 @app.route("/api/v1.0/precipitation")
 def precipitation():
     session = Session(engine)
-    """Return a dict for temp and dates over the last year"""
+    """Return a dict for temp for all dates """
 
     results = session.query(Measurement.date, Measurement.prcp).all()
 
@@ -80,8 +80,7 @@ def stations():
 
 @app.route("/api/v1.0/tobs")
 def tobs():
-    """Return temp and dates over the last year"""
-    
+        
     session = Session(engine)
     """Return a dict for temp and dates over the last year"""
     
