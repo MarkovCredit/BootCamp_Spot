@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Data Visualization and Analysis with Python and Bootstrap</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="footer-distributed-with-contact-form.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!---->
+  <style>
+  .fakeimg {
+      height: 200px;
+      background: #aaa;
+  }
+  </style>
+</head>
+<body> 
+
+<!-- <div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Data Viz and Bootstrap</h1>
+</div> -->
+  
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">Markov Credit - Data Visualizations</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="index.html">Home</a></li>
+        <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Visualizations
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a href="cloudiness.html">Lat vs Cloudiness</a></li>
+                  <li><a href="humidity.html">Lat vs Humidity</a></li>
+                  <li><a href="maxtemp.html">Lat vs Max Temp</a></li>
+                  <li><a href="windspeed.html">Lat vs Wind Speed</a></li>
+                </ul>
+              </li>
+        <li><a href="comparisons.html">Comparisons</a></li>
+        <li><a href="datapage_table.html">Data Table</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li><a href="https://www.amazon.com/s?k=free&ref=nb_sb_noss_2"><span class="glyphicon glyphicon-user"></span> Sign Up For Free Amazon packages!</a></li> -->
+        
+      </ul>
+    </div>
+  </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>Cloudiness x Latitude</h2>
+      <!--<h5>Photo of me:</h5> 
+      <div class="ME.jpg">Fake Image</div>
+      </p>-->
+      <!-- <h3>Some Links</h3> -->
+      <!-- <p>Plceholder for some other text.</p> -->
+     <!-- <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#">Link 1 Placeholder</a></li>
+        <li><a href="#">Link 2 Placeholder</a></li>
+        <li><a href="#">Link 3 Placeholder</a></li>
+      </ul> -->
+      <hr class="hidden-sm hidden-md hidden-lg">
+    </div>
+    <div class="col-sm-8">
+      <h2>Cloudiness as a function of Latitude<br/>
+      Pandas and Seaborn </h2>
+      <h5> In efforts to better understand weather patterns across the globe, our humble group of data sleuths took to a popular weather API (OpenWeatherMap API) and 
+        decided to plot key weather indicators against Latitide which runs up and down on the globe (0 degree latitude is the equator as a refresher).
+        <br/><br/>
+        Cloudiness: The regression line does not provide much insight into the relationship between Latitude and Cloudiness.<br/>
+        We can see some clusters around 0 % cloudiness that are between -40 and -20 degrees and again at 40 to 60 degrees latitidue; we would expect
+        elevated cloudiness further away from the equator. <br/>
+        An alternative in this case would be to plot against Longitude or a 3D plane with Longitude and Latitude.  </h5>
+      <!-- <div class="img=responsive" src = "Lat vs Max Temp.png">Max Temp x Latitude</div> -->
+      <div id="logo" class="col-md-4 col-sm-4 col-xs-12">
+          <a href="Lat vs Cloudiness.png"><img class="img" src="Lat vs Cloudiness.png"></a>
+      </div>
+      <!-- <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <br>
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <div class="fakeimg">Fake Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      -->
+    </div>
+  </div>
+</div>
+
+ <div class="panel-footer" style="margin-bottom:0"> 
+    
+ <!-- <li><a href="https://github.com/MarkovCredit/">My Git Hub</a></li>
+  <li><a href="mailto:mark.levinejr@gmail.com">Email</a> -->
+    
+
+
+<footer class="footer-basic-centered">
+
+      <p class="footer-links">
+      <a href="LandingPage.html">Home</a>
+      ·
+      <a href="https://www.linkedin.com/in/mark-levine-26192628/">Linkedin</a>
+      ·
+      <a href="https://github.com/MarkovCredit/">My Git Hub</a>
+      ·
+      <a href="mailto:mark.levinejr@gmail.com">Email</a>
+    </p>
+
+    <p class="footer-company-name">Markov Credit © 2018</p>
+
+  </footer>
+</div>
+</body>
+</html>
