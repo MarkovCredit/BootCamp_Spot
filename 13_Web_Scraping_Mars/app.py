@@ -25,10 +25,10 @@ def index ():
 @app.route('/scrape')
 def scrape_df ():
     mars = mongo.db.mars
-    mars_dict = scrape.scrape()
+    mars_data = scrape.scrape()
     mars.update(
         {},
-        mars_dict,
+        mars_data,
         upsert = True
     )
     

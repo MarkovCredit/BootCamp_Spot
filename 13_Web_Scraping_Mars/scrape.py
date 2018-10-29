@@ -48,13 +48,12 @@ def scrape():
 
     # In[8]:
 
-
+    #For loop if i want to display all the results
     results = soup_1.find_all('li', class_='slide')
-    i = 1
     title_list = []
     para_list = []
 
-    for result in results:
+    for result in results[0]:
         
         news_title = result.find('h3').text
         news_p = result.find('div', class_='rollover_description').text
@@ -62,10 +61,10 @@ def scrape():
         para_list.append(news_p)
         
         
-        print(f'----Printing article {i}-----')
-        print(news_title)
-        print(news_p)
-        i += 1
+        # print(f'----Printing article {i}-----')
+        # print(news_title)
+        # print(news_p)
+        # i += 1
         
 
 
@@ -73,13 +72,15 @@ def scrape():
 
 
 
-    articles_dict = dict(zip(title_list,para_list))
-
+    #articles_dict = dict(zip(title_list[0],para_list[0]))
+    #Just need the latest results
+    article_latest = news_title+":  "+news_p
+    
 
     # In[145]:
 
 
-    mars_dict['articles'] = articles_dict
+    mars_dict['article'] = article_latest
     
 
 
@@ -101,7 +102,7 @@ def scrape():
     # In[168]:
 
 
-    images = []
+    
     results_2 = soup_2.find('div', {'class': 'carousel_items'}).find('article')
 
     # for img in results_2:
@@ -142,7 +143,7 @@ def scrape():
     # In[169]:
 
 
-    mars_dict['Latestnews'] = latest_tweet
+    mars_dict['Weather'] = latest_tweet
 
 
     # #Mars Facts -- pull down tabular data, convert to table and then convert to HTML table string
@@ -153,10 +154,8 @@ def scrape():
     mars_f_url = 'https://space-facts.com/mars/'
     tables = pd.read_html(mars_f_url)
     df = tables[0]
-    df
-
-
-    # In[17]:
+    df.rename(columns={0: 'Desc', 1: 'Value'})
+        # In[17]:
 
 
     html_table = df.to_html()
