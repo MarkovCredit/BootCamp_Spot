@@ -80,7 +80,7 @@ def scrape():
 
 
     mars_dict['articles'] = articles_dict
-    mars_dict
+    
 
 
     # In[10]:
@@ -231,9 +231,7 @@ def scrape():
         
 
 
-    url_list
-
-
+    
     # In[171]:
 
 
