@@ -1,32 +1,38 @@
 #dependencies
 from flask import Flask, render_template, redirect,  jsonify
-from bs4 import BeautifulSoup
-from splinter import Browser
-import pymongo
+from flask_pymongo import PyMongo
+import pymongo as pm
 import scrape
 
 
 
+
+
+client = pm.MongoClient('mongodb://localhost:27017/')
+
+
 app = Flask(__name__)
 
-conn = 'mongodb://localhost:27017'
-
-client = pymongo.MongoClient(conn)
-db = client.mars_db
-collection = db.mars_collection
+mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
 @app.route('/')
 def index ():
-    mars_dict = list(db.collection.find())
-    print(mars_dict)
-    return render_template('index.html', mars_dict = mars_dict)
+    
+    mars = mongo.db.mars.find_one()
+    return render_template('index.html', mars = mars)
 
 
 @app.route('/scrape')
 def scrape_df ():
+    mars = mongo.db.mars
     mars_dict = scrape.scrape()
-    db.collection.insert_one(mars_dict)
-    return render_template('index.html')
+    mars.update(
+        {},
+        mars_dict,
+        upsert = True
+    )
+    
+    return redirect("/", code = 302)
 
 
 if __name__ == "__main__":

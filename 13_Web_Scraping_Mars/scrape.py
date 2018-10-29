@@ -240,6 +240,6 @@ def scrape():
 
     # In[172]:
 
-
+    browser.quit()
     return mars_dict
 
