@@ -2,32 +2,57 @@
 <html lang="en">
 
 <head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .imgbox {
+            display: grid;
+            height: 100%;
+        }
+        .center-fit {
+            max-width: 100%;
+            max-height: 100vh;
+            margin: auto;
+        }
+    </style>
+
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Scrape Mars Data</title>
+  <title>Mission to Mars </title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
-  <div class="container">
-
+  <div clas="container">
     <div class="jumbotron text-center">
-      <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Data</a></p>
+      <h1>Mission to Mars </h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape!</a></p>
     </div>
-
-    <!-- Craigslist Listings -->
-    <div class="row" id="craiglist-listings">
-      <div class="col-md-12">
-
-        <h3 class="heading">Latest Mars News</h3>
-        <h4> {{}} </h4>
+      
+    <!-- surf data -->
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+        
+          <h3><font size = 6> Mars News </font></h3>
+          <p> <font size = 5> {{ mars.article }} </font></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>Mars Featured Photo</h3>
+          <img class = "center-fit" src= {{ mars.cover_photo }}  />
+        
+          
+        </div>
       </div>
     </div>
 
-  </div>
 </body>
-
 </html>
 
