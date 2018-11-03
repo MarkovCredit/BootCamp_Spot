@@ -1,13 +1,10 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
-// d3.event.preventDefault();
-
-
+//declare button to watch events
 var submit = d3.select('#filter-btn');
 
-
+//trigger function when submit button is clicked on 
 submit.on('click', function(){
 
     d3.event.preventDefault();
