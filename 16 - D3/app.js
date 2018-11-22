@@ -1,4 +1,4 @@
-// @TODO: YOUR CODE HERE!
+//Set page height, width and margin parameters
 var svgWidth = 960;
 var svgHeight = 500;
 
@@ -14,8 +14,6 @@ var height = svgHeight - margin.top - margin.bottom;
 
 // Create an SVG wrapper, append an SVG group that will hold our chart,
 // and shift the latter by left and top margins.
-
-
 //testing code
 // d3.select('body').append('svg').
 // attr("width", 50).attr("height", 50)
@@ -45,6 +43,8 @@ function xScale(povdata, chosenXAxis) {
     return xLinearScale;
   
   }
+//render our axes with a function taking the parameters of newscale
+//and x axis
 
   function renderAxes(newXScale, xAxis) {
     var bottomAxis = d3.axisBottom(newXScale);
@@ -56,13 +56,18 @@ function xScale(povdata, chosenXAxis) {
     return xAxis;
   }
 
-  function renderCircles(circlesGroup, newXScale, chosenXaxis) {
+  function renderCircles(circlesGroup, newXScale, chosenXaxis, textGroup) {
 
     circlesGroup.transition()
       .duration(1000)
-      .attr("cx", d => newXScale(d[chosenXAxis]));
+      .attr("cx", d => newXScale(d[chosenXAxis]))
+      
+    textGroup.transition()
+      .duration(1000)
+      .attr('x', d => newXScale(d[chosenXaxis]));
   
-    return circlesGroup;
+    return circlesGroup
+    return textGroup;
   }
   // function rendertext(textGroup, newXScale, chosenXaxis) {
 
@@ -143,6 +148,14 @@ var circlesGroup = chartGroup.selectAll("circle")
     .attr("fill", "blue")
     .attr("opacity", ".375")
 
+  // circlesGroup.append('text.stateText')
+  // .data(povdata)
+  // .enter()
+  // .append('text')
+  // .classed('stateText',true)
+  // .attr("x", d => xLinearScale(d[chosenXAxis]))
+  // .attr("y", d => yLinearScale(d.noHealthInsurance))
+  // .text(d => d.abbr); 
     var textGroup = chartGroup.selectAll("text.stateText")
     .data(povdata)
     .enter()
@@ -150,28 +163,11 @@ var circlesGroup = chartGroup.selectAll("circle")
     .classed("stateText",true)
     .attr("x", d => xLinearScale(d[chosenXAxis]))
     .attr("y", d => yLinearScale(d.noHealthInsurance))
-    .text(d => d.abbr);  
-// var textGroup = chartGroup.append('text')
-// .data(povdata)
-//     .enter()
-//     .append("text")
-//     .attr("cx", d => xLinearScale(d[chosenXAxis]))
-//     .attr("cy", d => yLinearScale(d.healthcare))
-//     .text(function(d){return d.state})
+    .text(d => d.abbr); 
+
 
     
     
-// var circleattr = circlesGroup
-//                 .attr('cx', function (d){return d.state})
-//                 .attr("cy", function (d) { return d.state})
-//                .attr("r", 20 );
-// var circleText = chartGroup.selectAll('text')
-//     .data(povdata)
-//     .attr('dx',12)
-//     .attr('dy','.35em')
-//     .text(function(d) {return d.state})
-
-
     ;
  // Create group for  2 x- axis labels
  var labelsGroup = chartGroup.append("g")
@@ -221,7 +217,7 @@ var circlesGroup = chartGroup.selectAll("circle")
       xAxis = renderAxes(xLinearScale, xAxis);
 
       // updates circles with new x values
-      circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis);
+      circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, textGroup);
 
       // updates tooltips with new info
       circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
