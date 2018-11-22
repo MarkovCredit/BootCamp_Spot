@@ -143,14 +143,14 @@ var circlesGroup = chartGroup.selectAll("circle")
     .attr("fill", "blue")
     .attr("opacity", ".375")
 
-    var textGroup = chartGroup.selectAll("text")
+    var textGroup = chartGroup.selectAll("text.stateText")
     .data(povdata)
     .enter()
     .append("text")
     .classed("stateText",true)
     .attr("x", d => xLinearScale(d[chosenXAxis]))
     .attr("y", d => yLinearScale(d.noHealthInsurance))
-    .text(d => d.abbr); 
+    .text(d => d.abbr);  
 // var textGroup = chartGroup.append('text')
 // .data(povdata)
 //     .enter()
